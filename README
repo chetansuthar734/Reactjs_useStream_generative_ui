@@ -2,9 +2,9 @@ langgraph generative ui app
 
 prerequisites:
 
-1.ToolMessage 
+1.langgraph app
 2.Reactjs custom component at frontend
-3.useStream
+3.reactjs useStream by langgraph
 
 
 how langgraph generative ui work:
@@ -30,6 +30,10 @@ we can add custom component ,so when toolMessage push to client it render compon
 
 how to stream content inside custom ui message:
 langgraph node push state with same Tool id so component is not render multiple time at frontend and chunk is updated in ToolMessage content
+
+
+
+
 
 
 
