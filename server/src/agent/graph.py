@@ -39,12 +39,36 @@ from typing import Literal
 from langchain_core.tools import tool
 
 
-@tool
-def weather_tool(city:str):
-    """find the weather of given city"""
 
-    weather={'city':f'{city}','temperature':25.4,'condition':'foggy'}
-    return weather
+    
+import requests
+from langchain.tools import tool
+
+API_KEY = "your_openweathermap_api_key"
+
+@tool
+def get_weather(city: str) -> Literal[dict,str]:
+    """Get the current weather for a given city."""
+    try:
+        url = (
+            f"http://api.openweathermap.org/data/2.5/weather?q={city}"
+            f"&appid={API_KEY}&units=metric"
+        )
+        response = requests.get(url)
+        data = response.json()
+
+        if data.get("cod") != 200:
+            return f"Could not find weather for {city}"
+
+        weather = data["weather"][0]["description"]
+        temp = data["main"]["temp"]
+        feels_like = data["main"]["feels_like"]
+
+        weather={'city':f'{city}','temperature':{temp},'condition':{feels_like}
+        return weather
+
+    except Exception as e:
+        return f"Error fetching weather: {e}"
 
 
 
