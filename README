@@ -4,14 +4,16 @@ prerequisites:
 
 1.langgraph app
 2.Reactjs custom component at frontend
-3.reactjs useStream  hook by langgraph
+3.Reactjs useStream hook by langgraph
 
 
 how langgraph generative ui work:
 
-1.load custom component ui based on ToolMessage name ( )
-2.stream custom data inside custom ui for example code_ui component in stream codes 
-(ToolMessage with same id  render at frontend in reactjs ) 
+onCustomEvent:
+This callback function is triggered when the useStream hook receives a custom event from the LangGraph backend. 
+This is particularly useful for implementing Generative UI features, 
+where you might want to update the UI based on specific events during the agent's execution.
+It receives the custom event and options for mutating the UI state.
 
 
 
